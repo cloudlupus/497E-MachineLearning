@@ -1,0 +1,25 @@
+David Shagam
+W01027008
+Program 2 Machine learning
+
+NOTE: My program has 3 helper classes inside the same file. I'm not sure if you have to do anything special to compile this. I have been using intellij for this assignment which compiles it fine but I have not tested command line compilation.
+
+1) Worked individually
+
+2) Logistic Regression C=2 Multi Logistic Regression C>2 Both with L2 regularization. L2 regularization is always applied however if the cmd line argument or config doesn't specify the lambda it defaults to 0.
+
+3) Currently not implemented and not working is Back-tracking. I haven't attempted BackTracking due to time constraints. Due to my own negligence I did not give myself sufficient time to get all of the work done in a reasonable manner. 
+
+4) Tested using provided data sets 1) for cross referncing with students and 2) test the functionality of multi class binary classification loading configs arg parsing loading data and L2 norm.
+
+Manual test cases
+Test Case 1: Data from http://archive.ics.uci.edu/ml/datasets/Wine, Tested to see how differing styles of data worked. In this case I wasn't immediately searching for anything but realized there were very large ints of value 1000 or more. This resulted in a good test case for softmax. Softmax as it's created due to reaising a value to that number explodes extremely fast. This causes a double rollover into negative values. Causing every iteration after the first to predict -1 always. -1 is my default class choice when trying to make a prediction. This basically shows that no value inside of there is predicted to be a good choice due to double roll over. DO NOT USE LARGE VALUES.
+
+Test Case 2: Hand created from dataset2 which was provided. This was crafted to have a class not in the train set and only visible in the dev set to see how the program deals with not being able to have examples of a singular class. It starts off inaccurate around .412 and then becomes much more accurate by the end with a test accuracy of 0.706. This also tests how the program handles not knowing about a class but knowing that one should exist.
+
+5) Understanding the equations. Not having the matrix forms of the equations makes this more difficult to do As well as not having even a high level overview of how the L2 and the backtracking modify the gradient descent causes difficulties. Basically the difficulty so far isn't in implementing the parts but understanding how the pieces go togethere and converting them to a more useable form.
+
+6) Did not manage to implement BackTracking ran out of time. due to my own negligence.
+
+7) DataSet 8 {L2 Dev}={0 0.962} {.5,0.962 } {1,0.962} {1.5 0.962 } {2,0.964 } DataSet 3 {L2 Dev}={0 0.708} {.5,0.708} {1 0.708} {1.5,0.708 } {2,0.708 } DataSet 5 {0,0.569} {.5,0.569} {1,0.569} {1.5,0.569} {2,0.569}
+Based on this output Specifically with dataset 8 getting an L2 off 2 at a certain value it improves Based on the concept of regularization rewarding a simpler model at a certain point it will over simplify and no longer be an accurate model. However It would appear that we can tune this value so as to try and find an ideal.
